@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>guide 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/styles/style.css">
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .row {
+      margin: 2px;
+      border: 2px solid #000;
+      padding: 5px;
+    }
+
+
+    .col-6 {
+      padding: 5px;
+      border: 2px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="top-container">
+      <select>
+        <option key="0" value="occupation">Occupation</option>
+        <option key="1" value="mileage">Mileage</option>
+        <option key="2" value="use">Use</option>
+        <option key="3" value="ownership">Ownership</option>
+        <option key="4" value="address">Address</option>
+        <option key="5" value="convictions">Convictions</option>
+        <option key="6" value="claims">Claims</option>
+        <option key="7" value="residency">Residency</option>
+        <option key="8" value="licence-type">Licence Type</option>
+        <option key="9" value="licence-years">Licence Years</option>
+        <option key="10" value="diver-age">Driver Age</option>
+        <option key="11" value="NCD">NCD</option>
+        <option key="12" value="DLN">DLN Removed</option>
+      </select>
+    </div>
+    <div class=" row table-display">
+      <div class=" header-box  col-12">
+        <h3>Initial Inspection</h3>
+      </div>
+      <div class="col-12 ">
+        <p class="initial"></p>
+      </div>
+    </div>
+    <div class="row verbal">
+      <div class="col-12 verbal">
+        <h3>verbal</h3>
+      </div>
+      <div class="col-6 worst">
+        <h5>Confirmed Worst case</h5>
+        <hr>
+        <p class="verbalWorst"></p>
+      </div>
+      <div class="col-6">
+        <h5>PH doesn't confirm worstcase</h5>
+        <hr>
+        <p class="verbalNot"></p>
+      </div>
+    </div>
+    <div class="row written">
+      <div class="col-12">
+        <h3>Written</h3>
+      </div>
+      <div class="col-6">
+        <h5>Confirmed Worst Case</h5>
+        <hr>
+        <p class="writtenWorst"></p>
+      </div>
+      <div class="col-6">
+        <h5>Ph doesn't confirm worstcase</h5>
+        <hr>
+        <p class="writtenNot"></p>
+      </div>
+    </div>
+    <div class="row no-contact">
+      <h3 class="col-12">Nothing received</h3>
+      <hr>
+      <p class="nothing"></p>
+    </div>
+
+    <script>
+      const guide = {
+
+        occupation: {
+          initial: "<li>Unemployed - line of business - Clear Flag</li><li> Similar occupations - Does not rate - Refer to TA </li><li>Multiple, unrelated occupations - Refer to TA/TL</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW, request proof if required(consult TA/TL/UW) ',
+          writtenWorst: 'Close flag',
+          writtenNot: 'Complete MTA',
+          nothing: 'Amend to WSC'
+        },
+        mileage: {
+          initial: "<li>Over 40000 (unless policy has business use/quotes for business use) - Clear flag</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW (if required)',
+          writtenWorst: 'Complete MTA',
+          writtenNot: 'Close flag',
+          nothing: 'Amend to WSC'
+        },
+        use: {
+          initial: "<li>SDP&C/business use - if occupation is unemployed (unless ND is employed) - clear flag</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW if required',
+          writtenWorst: 'Complete MTA',
+          writtenNot: 'Close flag',
+          nothing: 'Amend to WSC'
+        },
+        ownership: {
+          initial: "<li>Mathes VDC MM/YY - clear flag</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Confirms VDC date DD/YY - complete MTA regardless of QM data, introduce quote data, request V5 if not',
+          writtenWorst: 'Complete MTA',
+          writtenNot: 'Confirms VDC date DD/YY - complete MTA regardless of QM data, introduce quote data, request V5 if not',
+          nothing: 'Amend to VDC'
+        },
+        address: {
+          initial: "<li>2 address & NCD confirmed with previous Insurance using address - clear flag</li><li>4+ address - refer to TA/TL</li>",
+          verbalWorst: '<li><b>Up to 3</b> Complete MTA ofter introducing quote data </li><li><b>4 or more</b> Request utility bill/DL</li>',
+          verbalNot: '<li>introduce quote data, close flag</li><li>Request utility bill/DL</li>',
+          writtenWorst: '<li>Complete MTA</li><li>Request utility bill</li>',
+          writtenNot: '<li>close flag</li><li>Request Utility bill/DL</li>',
+          nothing: 'Cancel'
+        },
+        convictions: {
+          initial: "<li>Unemployed - line of business - Clear Flag</li><li> Similar occupations - Does not rate - Refer to TA </li><li>Multiple, unrelated occupations - Refer to TA/TL</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW, request proof if required(consult TA/TL/UW) ',
+          writtenWorst: 'PH Does not confirm WCS or confirms what is on the policy',
+          writtenNot: 'Complete MTA',
+          nothing: 'No contact/Incomplete/Evidence not reveived by end of chase'
+        },
+        occupation: {
+          initial: "<li>Unemployed - line of business - Clear Flag</li><li> Similar occupations - Does not rate - Refer to TA </li><li>Multiple, unrelated occupations - Refer to TA/TL</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW, request proof if required(consult TA/TL/UW) ',
+          writtenWorst: 'PH Does not confirm WCS or confirms what is on the policy',
+          writtenNot: 'Complete MTA',
+          nothing: 'No contact/Incomplete/Evidence not reveived by end of chase'
+        },
+        occupation: {
+          initial: "<li>Unemployed - line of business - Clear Flag</li><li> Similar occupations - Does not rate - Refer to TA </li><li>Multiple, unrelated occupations - Refer to TA/TL</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW, request proof if required(consult TA/TL/UW) ',
+          writtenWorst: 'PH Does not confirm WCS or confirms what is on the policy',
+          writtenNot: 'Complete MTA',
+          nothing: 'No contact/Incomplete/Evidence not reveived by end of chase'
+        },
+        occupation: {
+          initial: "<li>Unemployed - line of business - Clear Flag</li><li> Similar occupations - Does not rate - Refer to TA </li><li>Multiple, unrelated occupations - Refer to TA/TL</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW, request proof if required(consult TA/TL/UW) ',
+          writtenWorst: 'PH Does not confirm WCS or confirms what is on the policy',
+          writtenNot: 'Complete MTA',
+          nothing: 'No contact/Incomplete/Evidence not reveived by end of chase'
+        },
+        occupation: {
+          initial: "<li>Unemployed - line of business - Clear Flag</li><li> Similar occupations - Does not rate - Refer to TA </li><li>Multiple, unrelated occupations - Refer to TA/TL</li>",
+          verbalWorst: 'Complete MTA after introducing quote data',
+          verbalNot: 'Introduce quote data, UW, request proof if required(consult TA/TL/UW) ',
+          writtenWorst: 'PH Does not confirm WCS or confirms what is on the policy',
+          writtenNot: 'Complete MTA',
+          nothing: 'No contact/Incomplete/Evidence not reveived by end of chase'
+        },
+
+      }
+
+      const selector = document.querySelector('select');
+
+      document.querySelector('select').addEventListener('change', () => {
+        changer();
+      });
+
+      const changer = (option) => {
+        option = selector.options[selector.selectedIndex].value;
+
+        document.querySelectorAll('p').forEach(elem => {
+          const name = elem.classList;
+          elem.innerHTML = `${guide[option][name]}`
+        })
+      };
+      window.onLoad = () => {
+        changer('occupation');
+      };
+    </script>
+</body>
+
+</html>
